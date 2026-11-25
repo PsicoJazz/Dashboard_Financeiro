@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartCash – Seu Dashboard Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>SmartCash</h1>
+    <p>Anote o que entra e o que sai. O saldo se atualiza na hora.</p>
+  </header>
+
+  <main class="layout">
+    <section class="coluna-controle">
+
+      <!-- Cards de resumo -->
+      <section class="resumo" aria-label="Resumo financeiro">
+        <article class="card card-saldo" id="card-saldo">
+          <h2>Saldo total</h2>
+          <p class="valor" id="saldo-total">R$ 0,00</p>
+        </article>
+        <article class="card card-entrada">
+          <h2><span aria-hidden="true">▲</span> Entradas</h2>
+          <p class="valor" id="total-entradas">R$ 0,00</p>
+        </article>
+        <article class="card card-saida">
+          <h2><span aria-hidden="true">▼</span> Saídas</h2>
+          <p class="valor" id="total-saidas">R$ 0,00</p>
+        </article>
+      </section>
+
+      <!-- Formulário -->
+      <form id="form-transacao" class="formulario" novalidate>
+        <h2>Nova transação</h2>
+
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" maxlength="40" placeholder="Ex.: Almoço, Salário">
+
+        <label for="valor">Valor (R$)</label>
+        <input type="text" id="valor" inputmode="decimal" placeholder="Ex.: 25,90">
+
+        <fieldset class="tipo">
+          <legend>Tipo</legend>
+          <label class="opcao opcao-entrada">
+            <input type="radio" name="tipo" value="entrada" checked>
+            <span>▲ Entrada</span>
+          </label>
+          <label class="opcao opcao-saida">
+            <input type="radio" name="tipo" value="saida">
+            <span>▼ Saída</span>
+          </label>
+        </fieldset>
+
+        <p id="mensagem-erro" class="erro" role="alert"></p>
+        <button type="submit" id="botao-adicionar">Adicionar transação</button>
+      </form>
+    </section>
+
+    <!-- Extrato -->
+    <section class="extrato" aria-label="Extrato">
+      <h2>Extrato</h2>
+      <ul id="lista-transacoes" class="lista"></ul>
+      <p id="extrato-vazio" class="vazio">Nenhuma transação ainda. Preencha o formulário para começar.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
